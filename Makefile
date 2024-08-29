@@ -13,6 +13,9 @@ up:
 	docker compose -f $(docker_compose) up -d
 
 down:
+	docker compose -f $(docker_compose) down
+
+clean:
 	docker stop $(shell docker ps -aq) || true
 	docker container prune -f
 	docker image prune -af
@@ -23,4 +26,6 @@ down:
 logs:
 	docker compose -f $(docker_compose) logs -f
 
-re : down all
+re : down clean all
+
+.PHONY: all build up down clean logs re 

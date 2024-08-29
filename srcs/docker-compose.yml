@@ -4,20 +4,20 @@ services:
 
   mariadb:
     build: ./requirements/mariadb
-    image: mariadb
+    image: mariadb:isidki
     container_name: mariadb
     restart: always
-    networks: 
+    networks:
       - net
     volumes:
-      - database:/var/lib/mysql
+      - database_vl:/var/lib/mysql
     env_file:
       - .env
 
   wordpress:
     build: ./requirements/wordpress
     container_name: wordpress
-    image: wordpress
+    image: wordpress:isidki
     restart: always
     env_file:
       - .env
@@ -31,7 +31,7 @@ services:
   nginx:
     build: ./requirements/nginx
     container_name: nginx
-    image: nginx
+    image: nginx:isidki
     restart: always
     env_file:
       - .env
@@ -44,9 +44,55 @@ services:
     networks:
       - net
 
+  redis:
+    build: ./requirements/bonus/redis
+    container_name: redis
+    image: redis:isidki
+    restart: always
+    depends_on:
+      - wordpress
+    networks:
+      - net
+    ports:
+      - 6379:6379
+
+  adminer:
+    build: ./requirements/bonus/adminer
+    image: adminer:isidki
+    container_name: adminer
+    depends_on:
+      - mariadb
+    ports:
+      - 8080:8080
+    networks:
+      - net
+    restart: always
+
+  portainer:
+    build: ./requirements/bonus/portainer
+    image: portainer:isidki
+    container_name: portainer
+    restart: always
+    ports:
+      - 9443:9443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - net
+
+  static_website:
+    build: ./requirements/bonus/static_website
+    image: static_website:isidki
+    container_name: static_website
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - net
+
 
 volumes:
-  database:
+  database_vl:
     name: mariadb_db
     driver_opts:
       type: none 

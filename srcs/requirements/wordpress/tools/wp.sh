@@ -12,6 +12,8 @@ else
     wp core download --allow-root # Download Wordpress
 
     wp config create --dbname=$DB_NAME --dbhost=$DB_HOST --dbuser=$DB_USERNAME --dbpass=$DB_PASSWORD --allow-root # Create wp-config.php
+    echo "define('FS_METHOD', 'direct');" >> wp-config.php # For WP Redis plugin installation to work
+    chown -R www-data:www-data /var/www/html
 
     wp core install --admin_user=$WP_ADMIN_USERNAME --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_EMAIL --url=$DOMAIN_NAME --title="Inception" --allow-root # Install Wordpress
 

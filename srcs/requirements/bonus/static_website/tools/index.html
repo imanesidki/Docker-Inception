@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Service Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="services">
+            <h2>Available Services</h2>
+            <div class="service-cards">
+                <!-- MariaDB - No HTTP Link Available -->
+                <div class="card" id="mariadb">
+                    <h3>MariaDB</h3>
+                    <p>Database service powering WordPress.</p>
+                    <p class="status">Status: <span id="status-mariadb">Checking...</span></p>
+                    <a href="#" class="no-access">No HTTP Access</a>
+                </div>
+
+                <!-- WordPress via Nginx (Port 443) -->
+                <div class="card" id="wordpress">
+                    <h3>WordPress</h3>
+                    <p>Content management system for creating websites.</p>
+                    <p class="status">Status: <span id="status-wordpress">Checking...</span></p>
+                    <a href="https://localhost" target="_blank">Visit WordPress</a>
+                </div>
+
+                <!-- Nginx (Port 443) -->
+                <div class="card" id="nginx">
+                    <h3>Nginx</h3>
+                    <p>Web server software powering the site.</p>
+                    <p class="status">Status: <span id="status-nginx">Running</span></p>
+                    <a href="https://localhost" target="_blank">Open Nginx</a>
+                </div>
+
+                <!-- Redis (Port 6379) - No HTTP Link Available -->
+                <div class="card" id="redis">
+                    <h3>Redis</h3>
+                    <p>In-memory data structure store.</p>
+                    <p class="status">Status: <span id="status-redis">Checking...</span></p>
+                    <a href="#" class="no-access">No HTTP Access</a>
+                </div>
+
+                <!-- Adminer (Port 8080) -->
+                <div class="card" id="adminer">
+                    <h3>Adminer</h3>
+                    <p>Database management tool.</p>
+                    <p class="status">Status: <span id="status-adminer">Running</span></p>
+                    <a href="http://localhost:8080" target="_blank">Open Adminer</a>
+                </div>
+
+                <!-- Portainer (Port 9443) -->
+                <div class="card" id="portainer">
+                    <h3>Portainer</h3>
+                    <p>Container management UI.</p>
+                    <p class="status">Status: <span id="status-portainer">Checking...</span></p>
+                    <a href="https://localhost:9443" target="_blank">Open Portainer</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About This Dashboard</h2>
+            <p>This dashboard provides a quick overview of the services running in the infrastructure, including databases, web servers, and container management tools.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Imane Sidki INCEPTION Project. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
